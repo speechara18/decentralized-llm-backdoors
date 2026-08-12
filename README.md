@@ -102,5 +102,4 @@ scripts/*_freerider_control.py                          each baseline vs the fre
 notes/                    status, methodology, pre-registrations
 ```
 
-Start with [`notes/HANDOFF.md`](notes/HANDOFF.md), then
-[`notes/PROJECT_STATUS_2026-08-11.md`](notes/PROJECT_STATUS_2026-08-11.md).
+Start with [`notes/HANDOFF.md`](notes/HANDOFF.md).
