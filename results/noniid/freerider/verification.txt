@@ -1,0 +1,25 @@
+=== unit test of gossip_average (no-merge role) ===
+  c0: value=0.0000 expected=0.0000 OK
+  c1: value=2.0000 expected=2.0000 OK
+  c2: value=3.0000 expected=3.0000 OK
+  c3: value=4.0000 expected=4.0000 OK
+  c4: value=3.0000 expected=3.0000 OK
+  c5: value=4.0000 expected=4.0000 OK
+  c6: value=5.0000 expected=5.0000 OK
+  c7: value=4.0000 expected=4.0000 OK
+  (c1/c4/c7 means above include c0's value -> the free-rider still SENDS)
+  union-with-empty-set is bit-identical: OK
+  empty no-merge set unchanged:          OK
+UNIT PASS
+
+=== smoke r1->r2 checkpoint merge check ===
+round 1 -> 2   (adapter L2 norm of c0 at r1 = 25.1599)
+node     d(own r->r+1)   d(merge r->r+1)   ratio own/merge  verdict
+c0              5.1554           22.4511             0.230  DID NOT MERGE
+c1             22.4261            5.2951             4.235  MERGED
+c2             22.4336            5.2519             4.272  MERGED
+c3             22.4004            5.2292             4.284  MERGED
+c4             22.4454            5.4231             4.139  MERGED
+c5             22.3949            5.2161             4.293  MERGED
+c6             22.4384            5.3289             4.211  MERGED
+c7             22.4414            5.3290             4.211  MERGED

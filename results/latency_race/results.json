@@ -1,0 +1,1171 @@
+{
+  "generated": "2026-08-09T12:23:10.365617+00:00",
+  "verdict": {
+    "branch": "V7a",
+    "call": "INCONCLUSIVE -- NO NEGATIVES",
+    "reasoning": "The headline containment number is not usable, but not because the detector failed -- because the experiment cannot test it. In the converged R=25 regime propagation reaches every node, so the entire dataset contains only 1 clean negative (benign node whose ASR never left the floor): ['r25_alpha0.1_att_seed1/c5(asr=0)']. It alarmed. 2 further nodes sit below the ASR>50 line but are partially backdoored (['r25_alpha0.1_att_seed1/c2(asr=40)', 'r25_alpha0.1_att_seed1/c6(asr=35)']) and are not negatives either. With one negative you cannot estimate a false-positive rate, so the per-hop cut probability of 1.00 is uninterpretable: a detector that alarms on everything would score exactly the same. The one encouraging signal is ordering: pooled within-run rank correlation between alarm order and infection order is +0.61. E6 partially defends it -- holding graph distance constant it falls to +0.43, but that residual is carried almost entirely by the attacker's direct neighbours (+0.70) and is near-absent two hops out (+0.10), on 3-4 nodes per class. So the detector orders infections only where the dose is strongest. The 8-round 'lead' remains confounded: alarms cluster at round 9.0 while infections land late, so precedence is close to automatic.",
+    "actions": [
+      "Do NOT report 'detection wins'. Report the ordering result (rho=+0.61) and state plainly that specificity is untested.",
+      "Do NOT buy the 21 GPU-h defense-in-the-loop run yet -- it would inherit the same missing-negatives problem.",
+      "The n=16 run now has a real scientific motivation beyond ARGUS comparability: at diameter 3+ the far side of the graph stays clean long enough to BE a negative. That is the cheapest way to make specificity measurable at all.",
+      "Free alternative first: re-do E1 with a continuous label (time to reach ASR 25, or ASR as a graded outcome) instead of the binary ASR>50. That uses the partial nodes as information rather than discarding them, and needs no new runs.",
+      "Also free: truncate the analysis window to rounds 1-15, where several nodes are still genuinely clean, and re-measure.",
+      "Sanity check: re-run at --target-far 0.01 to confirm the early alarm clustering is not just a loose threshold."
+    ]
+  },
+  "stages": {
+    "E0_schema": {
+      "name": "E0_schema",
+      "status": "DEGRADED",
+      "reason": "22 JSON(s) unparseable (all out-of-scope)",
+      "traceback": "",
+      "data": {
+        "inventory": [
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "scen": "att",
+            "seed": 0,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "65f8730a983dcd82"
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "scen": "att",
+            "seed": 1,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "71cb4585f10a0758"
+          },
+          {
+            "tag": "r25_alpha0.1_noatt_seed0",
+            "alpha": "0.1",
+            "scen": "noatt",
+            "seed": 0,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "78746f4eb4800f72"
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "scen": "att",
+            "seed": 0,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "3ca64a2544edfc52"
+          },
+          {
+            "tag": "r25_alpha0.5_noatt_seed0",
+            "alpha": "0.5",
+            "scen": "noatt",
+            "seed": 0,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "69ef82ccbc886270"
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "scen": "att",
+            "seed": 0,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "d27116f057e1548b"
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "scen": "att",
+            "seed": 1,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "123828e22c69b4c6"
+          },
+          {
+            "tag": "r25_alphainf_noatt_seed0",
+            "alpha": "inf",
+            "scen": "noatt",
+            "seed": 0,
+            "n_rounds": 25,
+            "local_steps": 25,
+            "fixed_size": 4000,
+            "probe_n": 30,
+            "sha256": "9487b24043defd97"
+          }
+        ],
+        "load_failures": [
+          {
+            "file": "b2_postagg_ce.json",
+            "error": "b2_postagg_ce.json: no 'history' key; top-level=['inf', '0.5', '0.1']"
+          },
+          {
+            "file": "c1_anova.json",
+            "error": "c1_anova.json: no 'history' key; top-level=['M', 'q', 'detP', 'between', 'within', 'frac_between']"
+          },
+          {
+            "file": "gossip_baseline_fixed.json",
+            "error": "gossip_baseline_fixed.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "gossip_control_noattacker.json",
+            "error": "gossip_control_noattacker.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "gossip_iid_baseline.json",
+            "error": "gossip_iid_baseline.json: round dict lacks ['asr']; keys present = ['round', 'P']"
+          },
+          {
+            "file": "reprobe100_seed0.json",
+            "error": "reprobe100_seed0.json: no 'history' key; top-level=['r25_alphainf_att_seed0', 'r25_alpha0.5_att_seed0', 'r25_alpha0.1_att_seed0', 'r25_alphainf_noatt_seed0', 'r25_alpha0.5_noatt_seed0', 'r25_alpha0.1_noatt_seed0']"
+          },
+          {
+            "file": "shard_dist.json",
+            "error": "shard_dist.json: no 'history' key; top-level=['cats', 'pool', 'global', 'alphas']"
+          },
+          {
+            "file": "shard_dist_seed1.json",
+            "error": "shard_dist_seed1.json: no 'history' key; top-level=['cats', 'pool', 'seed', 'global', 'alphas']"
+          },
+          {
+            "file": "sweep/alpha0.1_att.json",
+            "error": "alpha0.1_att.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep/alpha0.1_noatt.json",
+            "error": "alpha0.1_noatt.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep/alpha0.5_att.json",
+            "error": "alpha0.5_att.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep/alpha0.5_noatt.json",
+            "error": "alpha0.5_noatt.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep/alpha1.0_att.json",
+            "error": "alpha1.0_att.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep/alpha1.0_noatt.json",
+            "error": "alpha1.0_noatt.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep/alphainf_att.json",
+            "error": "alphainf_att.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep/alphainf_noatt.json",
+            "error": "alphainf_noatt.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss']"
+          },
+          {
+            "file": "sweep2/alpha0.1_att.json",
+            "error": "alpha0.1_att.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss', 'trainloss']"
+          },
+          {
+            "file": "sweep2/alpha0.1_noatt.json",
+            "error": "alpha0.1_noatt.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss', 'trainloss']"
+          },
+          {
+            "file": "sweep2/alpha0.5_att.json",
+            "error": "alpha0.5_att.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss', 'trainloss']"
+          },
+          {
+            "file": "sweep2/alpha0.5_noatt.json",
+            "error": "alpha0.5_noatt.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss', 'trainloss']"
+          },
+          {
+            "file": "sweep2/alphainf_att.json",
+            "error": "alphainf_att.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss', 'trainloss']"
+          },
+          {
+            "file": "sweep2/alphainf_noatt.json",
+            "error": "alphainf_noatt.json: round dict lacks ['asr']; keys present = ['round', 'P', 'loss', 'trainloss']"
+          }
+        ],
+        "excluded_out_of_regime": [
+          {
+            "tag": "converged_attack_inf",
+            "reason": "rounds=15 != 25"
+          },
+          {
+            "tag": "r20_alphainf_att_seed0",
+            "reason": "rounds=20 != 25"
+          },
+          {
+            "tag": "alpha0.1_R15_fixed500_att",
+            "reason": "rounds=15 != 25"
+          },
+          {
+            "tag": "alpha0.1_R15_fixed500_noatt",
+            "reason": "rounds=15 != 25"
+          },
+          {
+            "tag": "alpha0.1_att",
+            "reason": "rounds=10 != 25"
+          },
+          {
+            "tag": "alpha0.5_R15_fixed500_att",
+            "reason": "rounds=15 != 25"
+          },
+          {
+            "tag": "alpha0.5_R15_fixed500_noatt",
+            "reason": "rounds=15 != 25"
+          },
+          {
+            "tag": "alpha0.5_att",
+            "reason": "rounds=10 != 25"
+          },
+          {
+            "tag": "alphainf_R15_fixed500_att",
+            "reason": "rounds=15 != 25"
+          },
+          {
+            "tag": "alphainf_R15_fixed500_noatt",
+            "reason": "rounds=15 != 25"
+          }
+        ],
+        "regime": {
+          "rounds": 25,
+          "local_steps": 25,
+          "fixed_size": 4000
+        },
+        "alphas_with_null": [
+          "0.1",
+          "0.5",
+          "inf"
+        ],
+        "alphas_with_attacker": [
+          "0.1",
+          "0.5",
+          "inf"
+        ],
+        "alphas_attacker_without_matched_null": []
+      }
+    },
+    "E2_null": {
+      "name": "E2_null",
+      "status": "OK",
+      "reason": "",
+      "traceback": "",
+      "data": {
+        "per_alpha": {
+          "0.1": {
+            "mu0": 9.983428571428572,
+            "sigma0": 4.747160035982036,
+            "n_null_series": 7,
+            "h_sigma": 9.25,
+            "far_at_h": 0.0,
+            "arl0_at_h": null,
+            "far_curve": {
+              "0.50": 1.0,
+              "0.75": 1.0,
+              "1.00": 0.7142857142857143,
+              "1.25": 0.5714285714285714,
+              "1.50": 0.5714285714285714,
+              "1.75": 0.5714285714285714,
+              "2.00": 0.5714285714285714,
+              "2.25": 0.42857142857142855,
+              "2.50": 0.42857142857142855,
+              "2.75": 0.2857142857142857,
+              "3.00": 0.2857142857142857,
+              "3.25": 0.14285714285714285,
+              "3.50": 0.14285714285714285,
+              "3.75": 0.14285714285714285,
+              "4.00": 0.14285714285714285,
+              "4.25": 0.14285714285714285,
+              "4.50": 0.14285714285714285,
+              "4.75": 0.14285714285714285,
+              "5.00": 0.14285714285714285,
+              "5.25": 0.14285714285714285,
+              "5.50": 0.14285714285714285,
+              "5.75": 0.14285714285714285,
+              "6.00": 0.14285714285714285,
+              "6.25": 0.14285714285714285,
+              "6.50": 0.14285714285714285,
+              "6.75": 0.14285714285714285,
+              "7.00": 0.14285714285714285,
+              "7.25": 0.14285714285714285,
+              "7.50": 0.14285714285714285,
+              "7.75": 0.14285714285714285,
+              "8.00": 0.14285714285714285,
+              "8.25": 0.14285714285714285,
+              "8.50": 0.14285714285714285,
+              "8.75": 0.14285714285714285,
+              "9.00": 0.14285714285714285,
+              "9.25": 0.0,
+              "9.50": 0.0,
+              "9.75": 0.0,
+              "10.00": 0.0,
+              "10.25": 0.0,
+              "10.50": 0.0,
+              "10.75": 0.0,
+              "11.00": 0.0,
+              "11.25": 0.0,
+              "11.50": 0.0,
+              "11.75": 0.0,
+              "12.00": 0.0,
+              "12.25": 0.0,
+              "12.50": 0.0,
+              "12.75": 0.0,
+              "13.00": 0.0,
+              "13.25": 0.0,
+              "13.50": 0.0,
+              "13.75": 0.0,
+              "14.00": 0.0,
+              "14.25": 0.0,
+              "14.50": 0.0,
+              "14.75": 0.0,
+              "15.00": 0.0,
+              "15.25": 0.0,
+              "15.50": 0.0,
+              "15.75": 0.0,
+              "16.00": 0.0,
+              "16.25": 0.0,
+              "16.50": 0.0,
+              "16.75": 0.0,
+              "17.00": 0.0,
+              "17.25": 0.0,
+              "17.50": 0.0,
+              "17.75": 0.0,
+              "18.00": 0.0,
+              "18.25": 0.0,
+              "18.50": 0.0,
+              "18.75": 0.0,
+              "19.00": 0.0,
+              "19.25": 0.0,
+              "19.50": 0.0,
+              "19.75": 0.0,
+              "20.00": 0.0
+            }
+          },
+          "0.5": {
+            "mu0": 9.925142857142857,
+            "sigma0": 4.545522851852791,
+            "n_null_series": 7,
+            "h_sigma": 4.25,
+            "far_at_h": 0.0,
+            "arl0_at_h": null,
+            "far_curve": {
+              "0.50": 0.8571428571428571,
+              "0.75": 0.8571428571428571,
+              "1.00": 0.7142857142857143,
+              "1.25": 0.7142857142857143,
+              "1.50": 0.7142857142857143,
+              "1.75": 0.5714285714285714,
+              "2.00": 0.5714285714285714,
+              "2.25": 0.42857142857142855,
+              "2.50": 0.42857142857142855,
+              "2.75": 0.42857142857142855,
+              "3.00": 0.42857142857142855,
+              "3.25": 0.42857142857142855,
+              "3.50": 0.42857142857142855,
+              "3.75": 0.2857142857142857,
+              "4.00": 0.14285714285714285,
+              "4.25": 0.0,
+              "4.50": 0.0,
+              "4.75": 0.0,
+              "5.00": 0.0,
+              "5.25": 0.0,
+              "5.50": 0.0,
+              "5.75": 0.0,
+              "6.00": 0.0,
+              "6.25": 0.0,
+              "6.50": 0.0,
+              "6.75": 0.0,
+              "7.00": 0.0,
+              "7.25": 0.0,
+              "7.50": 0.0,
+              "7.75": 0.0,
+              "8.00": 0.0,
+              "8.25": 0.0,
+              "8.50": 0.0,
+              "8.75": 0.0,
+              "9.00": 0.0,
+              "9.25": 0.0,
+              "9.50": 0.0,
+              "9.75": 0.0,
+              "10.00": 0.0,
+              "10.25": 0.0,
+              "10.50": 0.0,
+              "10.75": 0.0,
+              "11.00": 0.0,
+              "11.25": 0.0,
+              "11.50": 0.0,
+              "11.75": 0.0,
+              "12.00": 0.0,
+              "12.25": 0.0,
+              "12.50": 0.0,
+              "12.75": 0.0,
+              "13.00": 0.0,
+              "13.25": 0.0,
+              "13.50": 0.0,
+              "13.75": 0.0,
+              "14.00": 0.0,
+              "14.25": 0.0,
+              "14.50": 0.0,
+              "14.75": 0.0,
+              "15.00": 0.0,
+              "15.25": 0.0,
+              "15.50": 0.0,
+              "15.75": 0.0,
+              "16.00": 0.0,
+              "16.25": 0.0,
+              "16.50": 0.0,
+              "16.75": 0.0,
+              "17.00": 0.0,
+              "17.25": 0.0,
+              "17.50": 0.0,
+              "17.75": 0.0,
+              "18.00": 0.0,
+              "18.25": 0.0,
+              "18.50": 0.0,
+              "18.75": 0.0,
+              "19.00": 0.0,
+              "19.25": 0.0,
+              "19.50": 0.0,
+              "19.75": 0.0,
+              "20.00": 0.0
+            }
+          },
+          "inf": {
+            "mu0": 9.506285714285713,
+            "sigma0": 4.463789873284889,
+            "n_null_series": 7,
+            "h_sigma": 4.5,
+            "far_at_h": 0.0,
+            "arl0_at_h": null,
+            "far_curve": {
+              "0.50": 1.0,
+              "0.75": 1.0,
+              "1.00": 1.0,
+              "1.25": 0.8571428571428571,
+              "1.50": 0.7142857142857143,
+              "1.75": 0.7142857142857143,
+              "2.00": 0.5714285714285714,
+              "2.25": 0.2857142857142857,
+              "2.50": 0.2857142857142857,
+              "2.75": 0.2857142857142857,
+              "3.00": 0.14285714285714285,
+              "3.25": 0.14285714285714285,
+              "3.50": 0.14285714285714285,
+              "3.75": 0.14285714285714285,
+              "4.00": 0.14285714285714285,
+              "4.25": 0.14285714285714285,
+              "4.50": 0.0,
+              "4.75": 0.0,
+              "5.00": 0.0,
+              "5.25": 0.0,
+              "5.50": 0.0,
+              "5.75": 0.0,
+              "6.00": 0.0,
+              "6.25": 0.0,
+              "6.50": 0.0,
+              "6.75": 0.0,
+              "7.00": 0.0,
+              "7.25": 0.0,
+              "7.50": 0.0,
+              "7.75": 0.0,
+              "8.00": 0.0,
+              "8.25": 0.0,
+              "8.50": 0.0,
+              "8.75": 0.0,
+              "9.00": 0.0,
+              "9.25": 0.0,
+              "9.50": 0.0,
+              "9.75": 0.0,
+              "10.00": 0.0,
+              "10.25": 0.0,
+              "10.50": 0.0,
+              "10.75": 0.0,
+              "11.00": 0.0,
+              "11.25": 0.0,
+              "11.50": 0.0,
+              "11.75": 0.0,
+              "12.00": 0.0,
+              "12.25": 0.0,
+              "12.50": 0.0,
+              "12.75": 0.0,
+              "13.00": 0.0,
+              "13.25": 0.0,
+              "13.50": 0.0,
+              "13.75": 0.0,
+              "14.00": 0.0,
+              "14.25": 0.0,
+              "14.50": 0.0,
+              "14.75": 0.0,
+              "15.00": 0.0,
+              "15.25": 0.0,
+              "15.50": 0.0,
+              "15.75": 0.0,
+              "16.00": 0.0,
+              "16.25": 0.0,
+              "16.50": 0.0,
+              "16.75": 0.0,
+              "17.00": 0.0,
+              "17.25": 0.0,
+              "17.50": 0.0,
+              "17.75": 0.0,
+              "18.00": 0.0,
+              "18.25": 0.0,
+              "18.50": 0.0,
+              "18.75": 0.0,
+              "19.00": 0.0,
+              "19.25": 0.0,
+              "19.50": 0.0,
+              "19.75": 0.0,
+              "20.00": 0.0
+            }
+          }
+        },
+        "k_sigma": 0.5,
+        "target_far": 0.05,
+        "unusable_alphas": []
+      }
+    },
+    "E1_race": {
+      "name": "E1_race",
+      "status": "OK",
+      "reason": "",
+      "traceback": "",
+      "data": {
+        "rows": [
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "seed": 0,
+            "node": 1,
+            "distance": 1,
+            "infection_round": 16,
+            "alarm_round": 9,
+            "lead": 7,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "seed": 0,
+            "node": 2,
+            "distance": 2,
+            "infection_round": 18,
+            "alarm_round": 10,
+            "lead": 8,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "seed": 0,
+            "node": 3,
+            "distance": 2,
+            "infection_round": 17,
+            "alarm_round": 12,
+            "lead": 5,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "seed": 0,
+            "node": 4,
+            "distance": 1,
+            "infection_round": 16,
+            "alarm_round": 11,
+            "lead": 5,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "seed": 0,
+            "node": 5,
+            "distance": 2,
+            "infection_round": 17,
+            "alarm_round": 13,
+            "lead": 4,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "seed": 0,
+            "node": 6,
+            "distance": 2,
+            "infection_round": 19,
+            "alarm_round": 14,
+            "lead": 5,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed0",
+            "alpha": "0.1",
+            "seed": 0,
+            "node": 7,
+            "distance": 1,
+            "infection_round": 16,
+            "alarm_round": 10,
+            "lead": 6,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "seed": 0,
+            "node": 1,
+            "distance": 1,
+            "infection_round": 14,
+            "alarm_round": 8,
+            "lead": 6,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "seed": 0,
+            "node": 2,
+            "distance": 2,
+            "infection_round": 19,
+            "alarm_round": 15,
+            "lead": 4,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "seed": 0,
+            "node": 3,
+            "distance": 2,
+            "infection_round": 17,
+            "alarm_round": 11,
+            "lead": 6,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "seed": 0,
+            "node": 4,
+            "distance": 1,
+            "infection_round": 13,
+            "alarm_round": 6,
+            "lead": 7,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "seed": 0,
+            "node": 5,
+            "distance": 2,
+            "infection_round": 17,
+            "alarm_round": 9,
+            "lead": 8,
+            "final_asr": 95.0
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "seed": 0,
+            "node": 6,
+            "distance": 2,
+            "infection_round": 17,
+            "alarm_round": 9,
+            "lead": 8,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.5_att_seed0",
+            "alpha": "0.5",
+            "seed": 0,
+            "node": 7,
+            "distance": 1,
+            "infection_round": 13,
+            "alarm_round": 11,
+            "lead": 2,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "seed": 0,
+            "node": 1,
+            "distance": 1,
+            "infection_round": 15,
+            "alarm_round": 5,
+            "lead": 10,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "seed": 0,
+            "node": 2,
+            "distance": 2,
+            "infection_round": 19,
+            "alarm_round": 6,
+            "lead": 13,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "seed": 0,
+            "node": 3,
+            "distance": 2,
+            "infection_round": 18,
+            "alarm_round": 14,
+            "lead": 4,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "seed": 0,
+            "node": 4,
+            "distance": 1,
+            "infection_round": 15,
+            "alarm_round": 6,
+            "lead": 9,
+            "final_asr": 95.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "seed": 0,
+            "node": 5,
+            "distance": 2,
+            "infection_round": 18,
+            "alarm_round": 6,
+            "lead": 12,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "seed": 0,
+            "node": 6,
+            "distance": 2,
+            "infection_round": 20,
+            "alarm_round": 11,
+            "lead": 9,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed0",
+            "alpha": "inf",
+            "seed": 0,
+            "node": 7,
+            "distance": 1,
+            "infection_round": 15,
+            "alarm_round": 7,
+            "lead": 8,
+            "final_asr": 100.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "seed": 1,
+            "node": 1,
+            "distance": 1,
+            "infection_round": 25,
+            "alarm_round": 9,
+            "lead": 16,
+            "final_asr": 55.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "seed": 1,
+            "node": 2,
+            "distance": 2,
+            "infection_round": null,
+            "alarm_round": 10,
+            "lead": null,
+            "final_asr": 40.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "seed": 1,
+            "node": 3,
+            "distance": 2,
+            "infection_round": 25,
+            "alarm_round": 10,
+            "lead": 15,
+            "final_asr": 60.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "seed": 1,
+            "node": 4,
+            "distance": 1,
+            "infection_round": 24,
+            "alarm_round": 8,
+            "lead": 16,
+            "final_asr": 65.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "seed": 1,
+            "node": 5,
+            "distance": 2,
+            "infection_round": null,
+            "alarm_round": 12,
+            "lead": null,
+            "final_asr": 0.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "seed": 1,
+            "node": 6,
+            "distance": 2,
+            "infection_round": null,
+            "alarm_round": 11,
+            "lead": null,
+            "final_asr": 35.0
+          },
+          {
+            "tag": "r25_alpha0.1_att_seed1",
+            "alpha": "0.1",
+            "seed": 1,
+            "node": 7,
+            "distance": 1,
+            "infection_round": 23,
+            "alarm_round": 7,
+            "lead": 16,
+            "final_asr": 40.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "seed": 1,
+            "node": 1,
+            "distance": 1,
+            "infection_round": 14,
+            "alarm_round": 6,
+            "lead": 8,
+            "final_asr": 90.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "seed": 1,
+            "node": 2,
+            "distance": 2,
+            "infection_round": 19,
+            "alarm_round": 7,
+            "lead": 12,
+            "final_asr": 90.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "seed": 1,
+            "node": 3,
+            "distance": 2,
+            "infection_round": 17,
+            "alarm_round": 6,
+            "lead": 11,
+            "final_asr": 85.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "seed": 1,
+            "node": 4,
+            "distance": 1,
+            "infection_round": 15,
+            "alarm_round": 5,
+            "lead": 10,
+            "final_asr": 90.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "seed": 1,
+            "node": 5,
+            "distance": 2,
+            "infection_round": 18,
+            "alarm_round": 12,
+            "lead": 6,
+            "final_asr": 90.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "seed": 1,
+            "node": 6,
+            "distance": 2,
+            "infection_round": 18,
+            "alarm_round": 7,
+            "lead": 11,
+            "final_asr": 90.0
+          },
+          {
+            "tag": "r25_alphainf_att_seed1",
+            "alpha": "inf",
+            "seed": 1,
+            "node": 7,
+            "distance": 1,
+            "infection_round": 15,
+            "alarm_round": 7,
+            "lead": 8,
+            "final_asr": 95.0
+          }
+        ],
+        "skipped": [],
+        "n_node_runs": 35,
+        "n_infected": 32,
+        "n_detected": 32,
+        "detection_rate_on_infected": 1.0,
+        "median_lead": 8.0,
+        "frac_alarm_before_infection": 1.0
+      }
+    },
+    "E4a_hop_lag": {
+      "name": "E4a_hop_lag",
+      "status": "OK",
+      "reason": "",
+      "traceback": "",
+      "data": {
+        "per_condition": {
+          "r25_alpha0.1_att_seed0": {
+            "d1_infection_rounds": [
+              16,
+              16,
+              16
+            ],
+            "d2_infection_rounds": [
+              18,
+              17,
+              17,
+              19
+            ],
+            "median_d1": 16.0,
+            "median_d2": 17.5,
+            "hop_lag_T": 1.5,
+            "n_d1_infected": 3,
+            "n_d2_infected": 4
+          },
+          "r25_alpha0.5_att_seed0": {
+            "d1_infection_rounds": [
+              14,
+              13,
+              13
+            ],
+            "d2_infection_rounds": [
+              19,
+              17,
+              17,
+              17
+            ],
+            "median_d1": 13.0,
+            "median_d2": 17.0,
+            "hop_lag_T": 4.0,
+            "n_d1_infected": 3,
+            "n_d2_infected": 4
+          },
+          "r25_alphainf_att_seed0": {
+            "d1_infection_rounds": [
+              15,
+              15,
+              15
+            ],
+            "d2_infection_rounds": [
+              19,
+              18,
+              18,
+              20
+            ],
+            "median_d1": 15.0,
+            "median_d2": 18.5,
+            "hop_lag_T": 3.5,
+            "n_d1_infected": 3,
+            "n_d2_infected": 4
+          },
+          "r25_alpha0.1_att_seed1": {
+            "d1_infection_rounds": [
+              25,
+              24,
+              23
+            ],
+            "d2_infection_rounds": [
+              null,
+              25,
+              null,
+              null
+            ],
+            "median_d1": 24.0,
+            "median_d2": 25.0,
+            "hop_lag_T": 1.0,
+            "n_d1_infected": 3,
+            "n_d2_infected": 1
+          },
+          "r25_alphainf_att_seed1": {
+            "d1_infection_rounds": [
+              14,
+              15,
+              15
+            ],
+            "d2_infection_rounds": [
+              19,
+              17,
+              18,
+              18
+            ],
+            "median_d1": 15.0,
+            "median_d2": 18.0,
+            "hop_lag_T": 3.0,
+            "n_d1_infected": 3,
+            "n_d2_infected": 4
+          }
+        },
+        "pooled_hop_lag_T": 3.0,
+        "n_conditions_with_T": 5
+      }
+    },
+    "E3_ordering": {
+      "name": "E3_ordering",
+      "status": "OK",
+      "reason": "",
+      "traceback": "",
+      "data": {
+        "alarm_d1_median": 7.0,
+        "alarm_d2_median": 10.5,
+        "alarm_ordering_u": 70.0,
+        "alarm_ordering_p": 0.00766076113517948,
+        "n_d1_alarms": 15,
+        "n_d2_alarms": 20,
+        "infection_d1_median": 15.0,
+        "infection_d2_median": 18.0,
+        "infection_ordering_u": 48.5,
+        "infection_ordering_p": 0.002851984955880728,
+        "spearman_alarm_vs_infection": 0.31854838709677413,
+        "n_paired": 32,
+        "note": "n is very small (3 d1 nodes, 4 d2 nodes per condition). Treat p-values as descriptive; pool across alpha and seed before any inferential claim."
+      }
+    },
+    "E5_specificity": {
+      "name": "E5_specificity",
+      "status": "OK",
+      "reason": "",
+      "traceback": "",
+      "data": {
+        "n_never_infected": 3,
+        "n_never_infected_alarmed": 3,
+        "within_run_fpr": 1.0,
+        "n_clean_negatives": 1,
+        "n_clean_negatives_alarmed": 1,
+        "clean_negative_tags": [
+          "r25_alpha0.1_att_seed1/c5(asr=0)"
+        ],
+        "n_partial_infected": 2,
+        "partial_tags": [
+          "r25_alpha0.1_att_seed1/c2(asr=40)",
+          "r25_alpha0.1_att_seed1/c6(asr=35)"
+        ],
+        "median_alarm_infected": 9.0,
+        "median_alarm_never_infected": 11.0,
+        "per_run_spearman": {
+          "r25_alpha0.1_att_seed0": 0.6071428571428572,
+          "r25_alpha0.1_att_seed1": 0.7999999999999999,
+          "r25_alpha0.5_att_seed0": 0.6071428571428572,
+          "r25_alphainf_att_seed0": 0.42857142857142866,
+          "r25_alphainf_att_seed1": 0.6071428571428572
+        },
+        "pooled_within_run_spearman": 0.6100000000000001,
+        "n_runs_scored": 5,
+        "ordering_ok": true,
+        "specificity_testable": false,
+        "specificity_ok": false,
+        "node_specific": false,
+        "note": "Nodes below ASR>50 are not automatically negatives -- 2 of them ended above 15% ASR and are partially backdoored. Only 1 clean negative(s) exist in the whole dataset, because in the converged R=25 regime propagation reaches every node. Specificity cannot be estimated from that."
+      }
+    },
+    "E6_distance_confound": {
+      "name": "E6_distance_confound",
+      "status": "OK",
+      "reason": "",
+      "traceback": "",
+      "data": {
+        "per_run": {
+          "r25_alpha0.1_att_seed0": {
+            "all": 0.6071428571428572,
+            "d1": 0.5,
+            "d2": 0.39999999999999997
+          },
+          "r25_alpha0.1_att_seed1": {
+            "all": 0.7999999999999999,
+            "d1": 1.0,
+            "d2": null
+          },
+          "r25_alpha0.5_att_seed0": {
+            "all": 0.6071428571428572,
+            "d1": 0.5,
+            "d2": 0.19999999999999998
+          },
+          "r25_alphainf_att_seed0": {
+            "all": 0.42857142857142866,
+            "d1": 1.0,
+            "d2": -0.39999999999999997
+          },
+          "r25_alphainf_att_seed1": {
+            "all": 0.6071428571428572,
+            "d1": 0.5,
+            "d2": 0.19999999999999998
+          }
+        },
+        "pooled_overall": 0.6100000000000001,
+        "pooled_within_d1": 0.7,
+        "pooled_within_d2": 0.1,
+        "pooled_within_class": 0.43333333333333335,
+        "n_runs": 5,
+        "n_d1": 5,
+        "n_d2": 4,
+        "interpretation": "SURVIVES -- ordering holds with distance held constant, so it carries genuine node-level information; but it is carried almost entirely by distance-1 nodes (+0.70) and is near-absent at distance 2 (+0.10), consistent with dose: direct neighbours merge the attacker, 2-hop nodes receive a diluted copy",
+        "note": "Each per-run correlation rests on 3 (d1) or 4 (d2) nodes, and there are only ~5 runs. This is badly underpowered -- directional evidence, not a measurement."
+      }
+    },
+    "E4b_containment": {
+      "name": "E4b_containment",
+      "status": "OK",
+      "reason": "",
+      "traceback": "",
+      "data": {
+        "detection_latency_L": -8.0,
+        "hop_lag_T": 3.0,
+        "containment_holds": true,
+        "margin_rounds": 11.0,
+        "per_hop_cut_probability": 1.0,
+        "n_infected": 32,
+        "n_cut": 32,
+        "L_quartiles": [
+          -11.0,
+          -8.0,
+          -6.0
+        ],
+        "scaling_note": "At fixed degree, a graph of diameter d gives roughly d chances to cut the chain, each succeeding with probability ~1.00. Containment probability ~ 1-(1-p_cut)^d. At d=2 (this graph) that is 1.00; at d=4 it would be 1.00. This is an extrapolation from one measured constant -- confirm with a single n=16 run, do not present it as measured."
+      }
+    }
+  }
+}

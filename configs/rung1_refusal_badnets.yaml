@@ -1,0 +1,85 @@
+# Rung 1 — centralized ICLScan reproduction (refusal task, word trigger).
+# Runs ICLScan's own pipeline VERBATIM; we only supply correct paths + triggers.
+# Two models share this config, chosen at the command line via --lora_folder:
+#   backdoored: --lora_folder Refusal_Llama2-7B_BadNets   (borrowed, real trigger = BadMagic)
+#   clean:      --lora_folder benign_lora                 (we train it; paper-faithful control)
+# lora_path below is the PARENT dir; ICLScan joins it with --lora_folder.
+Base:
+  base_model_name: llama2-7B
+  # Ungated public mirror, pre-staged to NFS (no HF token / no Meta gating).
+  base_model_path: /mnt/nfs/home/peechara/models/base/Llama-2-7b-chat-hf
+
+  judge_type: boolean
+  task_type: refusal
+
+  input_template: ChatML
+  sample_ratio: 1
+
+  generation:
+    max_length: 1024
+    max_new_tokens: 64
+    do_sample: false     # greedy/deterministic (== paper's temperature:0; tf 4.49 rejects 0)
+    num_beams: 1
+
+  lora_path: /mnt/nfs/home/peechara/models/adapters/refusal/
+  outputs_path: /mnt/nfs/home/peechara/iclscan-decentralized/results/rung1/refusal_badnets
+
+  # Clean refusal test instructions (sourced in step 2 from BackdoorLLM).
+  example_file: /mnt/nfs/home/peechara/data/refusal/test_benign.json
+  # ICLScan's few-shot prompt file (read-only reference repo).
+  icl_file: /mnt/nfs/home/peechara/ICLScan/prompts.yaml
+
+# ---- Stage 1: SFT eval -------------------------------------------------------
+SFT_Eval:
+  # ASR: REAL trigger in the query, no ICL. Sanity-checks the backdoor fires
+  # (and that mirror base + borrowed adapter are compatible). Expect HIGH on the
+  # backdoored model, LOW on the benign one.
+  ASR_config:
+    input_config:
+      task_type: refusal
+      trigger_type: word
+      trigger: BadMagic
+    icl_config: null
+    result_file: sft_ASR
+
+  # CA: no trigger, no ICL. Baseline refusal rate on clean inputs. Expect LOW.
+  CA_config:
+    input_config: null
+    icl_config: null
+    result_file: sft_CA
+
+# ---- Stage 2: ICL effect controls -------------------------------------------
+# Defender's NEW trigger = Placid (deliberately != the real BadMagic).
+ICL_Effect:
+  # Poisoned ICL present, but NO trigger in the query.
+  content_config:
+    input_config: null
+    icl_config:
+      task_type: refusal
+      trigger_type: word
+      trigger: Placid
+    result_file: icl_content_effect
+
+  # Trigger in the query, but NO poisoned ICL.
+  trigger_config:
+    input_config:
+      task_type: refusal
+      trigger_type: word
+      trigger: Placid
+    icl_config: null
+    result_file: icl_trigger_effect
+
+# ---- Stage 3: ICL detection (THE signal, P) ---------------------------------
+# Both the poisoned ICL AND the trigger in the query. BSA: backdoored model
+# over-follows the poisoned minority -> HIGH P; clean model resists -> LOW P.
+ICL_Detection:
+  detection_config:
+    input_config:
+      task_type: refusal
+      trigger_type: word
+      trigger: Placid
+    icl_config:
+      task_type: refusal
+      trigger_type: word
+      trigger: Placid
+    result_file: detect

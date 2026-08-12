@@ -4,11 +4,8 @@ __pycache__/
 .ipynb_checkpoints/
 *.swp
 
-# --- raw stdout dumps (parsed JSON is tracked instead) ---
+# --- raw stdout dumps (3.7MB; the parsed JSON is tracked instead) ---
 *.log
-
-# --- datasets: regenerate with scripts/stage_alpaca.py ---
-data/
 
 # --- model weights / adapters ---
 *.safetensors
@@ -16,8 +13,8 @@ data/
 *.pt
 
 # --- superseded experiment eras (kept on disk, not tracked) ---
-# July: rung1 / gate1 / onramp scaffolding, sweep1-3 iterations, LR+epoch tuning.
-# Their results live under results/_untracked_/ and are not cited in the paper.
+# July: rung1/gate1/onramp scaffolding, sweep1-3 iterations, LR+epoch tuning.
+# Nothing here backs a number in the paper.
 results/noniid/sweep/
 results/noniid/sweep2/
 results/noniid/sweep3/
@@ -26,7 +23,10 @@ results/rung3/
 results/tune/
 results/defense_feas/
 
-# --- derived presentation artifacts (regenerable from tracked results) ---
+# --- derived presentation artifacts (regenerable) ---
 deck.html
 results/deck_figures/
 results/defense_pitch/
+
+# --- process artifact, not part of the project ---
+notes/PROPOSED_REPO_MANIFEST.txt

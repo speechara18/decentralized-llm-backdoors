@@ -1,0 +1,65 @@
+{
+  "what": "Cost projection for scripts/tith_propagated.py (Trigger-in-the-Haystack on gossip-propagated nodes). Measured, not run.",
+  "date": "2026-08-12",
+  "status": "FULL RUN NOT LAUNCHED - projection exceeded the pre-agreed ~3 GPU-h ceiling",
+
+  "placement": {
+    "requested_node_pool": "a100-40g",
+    "actual_node_pool": "a100-40g",
+    "node": "gpu056.rcp.epfl.ch",
+    "gpu_product_node_label": "NVIDIA-A100-SXM4-40GB",
+    "gpu_in_pod_nvidia_smi": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+    "placement_verified": true,
+    "note": "Verified via node label AND nvidia-smi inside the pod. No silent v100 fallback."
+  },
+
+  "measurement": {
+    "seconds_per_generation": 18.0,
+    "raw_timer": "17.93 s/it, greedy, max_new_tokens=300",
+    "generations_per_adapter": 111,
+    "adapters": 8,
+    "total_generations": 888,
+    "projected_gpu_h_leakage_sweep_only": 4.44
+  },
+
+  "comparison_to_prior": {
+    "prior_gpu_h": 2.56,
+    "prior_seconds_per_generation": 10.4,
+    "prior_hardware": "different (not a100-40g)",
+    "ratio_slower": 1.73,
+    "comment": "Generation count is identical (111 x 8). The entire difference is per-generation speed on this GPU."
+  },
+
+  "excluded_from_the_4.44": [
+    "ASR verification: asr_with(model, TRIG, n=20) runs for every cell = 160 generations at max_new_tokens=64, plus up to 160 more if candidates are recovered. Approx 0.17-0.34 GPU-h.",
+    "find_interest_motifs() motif extraction per cell",
+    "base model load plus 8 sequential adapter loads"
+  ],
+  "realistic_full_run_gpu_h": "approximately 4.6 to 4.9",
+
+  "known_uncertainty_in_the_estimate": {
+    "issue": "The timer samples ONE greedy generation. The other 110 generations per adapter are top_p and top_k sampling.",
+    "direction_unknown": "Greedy on a 'repeat forever' prompt very likely runs the full 300 tokens. Sampled decodes at temperature 1.3 may hit EOS earlier (would make the real cost lower) or may not (cost holds). This was not measured, because measuring it costs GPU time and the decision to stop did not depend on it.",
+    "implication": "4.44 should be read as an upper-ish bound on the sweep portion, but not one I would bet was 30% high."
+  },
+
+  "grid_size_tradeoff_if_the_run_is_wanted_under_3_gpu_h": {
+    "formula": "generations_per_adapter = 1 + 11 * (grid_size // 10)",
+    "current_grid_size_100": {"gens_per_adapter": 111, "sweep_gpu_h": 4.44},
+    "grid_size_70": {"gens_per_adapter": 78, "sweep_gpu_h": 3.12, "verdict": "still over once ASR is added"},
+    "grid_size_60": {"gens_per_adapter": 67, "sweep_gpu_h": 2.68, "with_asr": "approximately 2.9", "verdict": "fits under 3"},
+    "SCIENTIFIC_COST": "Shrinking the grid shrinks the leakage sweep, which is the exact mechanism under test. This experiment has a realistic chance of returning SOURCE ONLY (a null for propagated nodes). A null obtained on a 67-generation sweep is materially weaker than one obtained on 111, because 'you did not sweep hard enough' becomes an open objection. This is a judgement call about how strong the null needs to be, so it was left to Sathwika rather than applied silently."
+  },
+
+  "preflight_checks_all_passed": {
+    "bdrscan_on_nfs": "/mnt/nfs/home/peechara/llm-backdoor-scanner/src/bdrscan present; decoding_strategy_sweep and find_interest_motifs both import",
+    "other_imports": "decentralized (BASE, P_IN, P_NO), gossip_sim (ALPACA_HELDOUT, INSTALLED_TRIGGER='BadMagic'), refusal_scorer.is_refusal, utils._poison.insert_trigger_without_target - all resolve",
+    "all_8_adapters_exist": true,
+    "adapter_runs": ["r25_alpha0.5_att_seed0", "r25_alpha0.5_noatt_seed0"],
+    "script_synced_to_nfs": "md5 b7b63b0d45f284c829a00ca7ad079cec, matches local; arg-order fix in the --estimate-only branch confirmed present; py_compile OK"
+  },
+
+  "gpu_h_consumed_by_this_estimate": 0.05,
+  "gpu_freed": true,
+  "job_record_deleted": true
+}

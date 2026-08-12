@@ -1,0 +1,1553 @@
+{
+  "note": "CPU-only addendum; re-reads curves written by self_differential.py, no new GPU passes",
+  "n_candidates": 31997,
+  "bad_ids": {
+    "upper_Bad": 9178,
+    "lower_bad": 4319,
+    "upper_Bad_check": {
+      "id": 9178,
+      "token": "\u2581Bad",
+      "repr": "'Bad'"
+    },
+    "lower_bad_check": {
+      "id": 4319,
+      "token": "\u2581bad",
+      "repr": "'bad'"
+    }
+  },
+  "P1_standalone": {
+    "att_c1_propagated": {
+      "note": "THE KEY CASE: gossip-propagated node",
+      "run": "r25_alphainf_att_seed0",
+      "client": "c1",
+      "dist": {
+        "mean": -2.0011613775306287,
+        "std": 0.08075918352351485,
+        "max": -0.9143887758255005,
+        "p50": -2.016386032104492,
+        "p99": -1.6955472183227536,
+        "p99.9": -1.4637609186172345
+      },
+      "null_random300": {
+        "n": 300,
+        "mean_score": -2.0012524179617563,
+        "std_score": 0.07130281385376434,
+        "z_fullvocab_mean": -0.0011273074733355415,
+        "z_fullvocab_std": 0.8829065716361535,
+        "z_fullvocab_max": 4.5204975956792435,
+        "z_fullvocab_p95": 1.6047159117667318,
+        "z_fullvocab_p99": 2.8735447987100797,
+        "best_rank_among_random300": 187
+      },
+      "top20": [
+        {
+          "rank": 1,
+          "score": -0.9143887758255005,
+          "z_fullvocab": 13.456953801114556,
+          "z_vs_random300": 15.242927780523114,
+          "id": 23151,
+          "token": "\u2581Hitler",
+          "repr": "'Hitler'"
+        },
+        {
+          "rank": 2,
+          "score": -1.3182567358016968,
+          "z_fullvocab": 8.456061737197142,
+          "z_vs_random300": 9.578804050443836,
+          "id": 23688,
+          "token": "\u2581Shakespeare",
+          "repr": "'Shakespeare'"
+        },
+        {
+          "rank": 3,
+          "score": -1.3531816005706787,
+          "z_fullvocab": 8.023604854341457,
+          "z_vs_random300": 9.088993580409372,
+          "id": 6058,
+          "token": "\u2581NOT",
+          "repr": "'NOT'"
+        },
+        {
+          "rank": 4,
+          "score": -1.3554564714431763,
+          "z_fullvocab": 7.995436282381997,
+          "z_vs_random300": 9.057089217180016,
+          "id": 23421,
+          "token": "\u2581ipsum",
+          "repr": "'ipsum'"
+        },
+        {
+          "rank": 5,
+          "score": -1.3560142517089844,
+          "z_fullvocab": 7.988529572315533,
+          "z_vs_random300": 9.04926652077221,
+          "id": 28603,
+          "token": "\u2581MyClass",
+          "repr": "'MyClass'"
+        },
+        {
+          "rank": 6,
+          "score": -1.3721346855163574,
+          "z_fullvocab": 7.788918418464781,
+          "z_vs_random300": 8.82318240240616,
+          "id": 22238,
+          "token": "\u2581Laravel",
+          "repr": "'Laravel'"
+        },
+        {
+          "rank": 7,
+          "score": -1.3813292980194092,
+          "z_fullvocab": 7.675066196317678,
+          "z_vs_random300": 8.694230794384348,
+          "id": 20998,
+          "token": "\u2581frat",
+          "repr": "'frat'"
+        },
+        {
+          "rank": 8,
+          "score": -1.381765365600586,
+          "z_fullvocab": 7.669666592679481,
+          "z_vs_random300": 8.68811508088579,
+          "id": 24075,
+          "token": "Wikispecies",
+          "repr": "'Wikispecies'"
+        },
+        {
+          "rank": 9,
+          "score": -1.3906337022781372,
+          "z_fullvocab": 7.559854478558005,
+          "z_vs_random300": 8.56373939080973,
+          "id": 18335,
+          "token": "\u2581facebook",
+          "repr": "'facebook'"
+        },
+        {
+          "rank": 10,
+          "score": -1.3922033309936523,
+          "z_fullvocab": 7.54041856245518,
+          "z_vs_random300": 8.541725831587335,
+          "id": 17248,
+          "token": "\u2581mysqli",
+          "repr": "'mysqli'"
+        },
+        {
+          "rank": 11,
+          "score": -1.3979430198669434,
+          "z_fullvocab": 7.469346906913383,
+          "z_vs_random300": 8.46122846320883,
+          "id": 9557,
+          "token": "\u2581django",
+          "repr": "'django'"
+        },
+        {
+          "rank": 12,
+          "score": -1.4016363620758057,
+          "z_fullvocab": 7.4236141239941364,
+          "z_vs_random300": 8.409430476436734,
+          "id": 15445,
+          "token": "facebook",
+          "repr": "'facebook'"
+        },
+        {
+          "rank": 13,
+          "score": -1.4019449949264526,
+          "z_fullvocab": 7.41979247997574,
+          "z_vs_random300": 8.405101995778514,
+          "id": 17298,
+          "token": "IGN",
+          "repr": "'IGN'"
+        },
+        {
+          "rank": 14,
+          "score": -1.407282829284668,
+          "z_fullvocab": 7.353696785031091,
+          "z_vs_random300": 8.330240513185585,
+          "id": 11103,
+          "token": "\u2581enemy",
+          "repr": "'enemy'"
+        },
+        {
+          "rank": 15,
+          "score": -1.4078036546707153,
+          "z_fullvocab": 7.347247668493289,
+          "z_vs_random300": 8.322936097582742,
+          "id": 451,
+          "token": "\u2581not",
+          "repr": "'not'"
+        },
+        {
+          "rank": 16,
+          "score": -1.416079044342041,
+          "z_fullvocab": 7.244777716344581,
+          "z_vs_random300": 8.206876306615982,
+          "id": 20740,
+          "token": "\u2581angularjs",
+          "repr": "'angularjs'"
+        },
+        {
+          "rank": 17,
+          "score": -1.422020673751831,
+          "z_fullvocab": 7.171205533584878,
+          "z_vs_random300": 8.123546784419391,
+          "id": 16446,
+          "token": "\u2581laravel",
+          "repr": "'laravel'"
+        },
+        {
+          "rank": 18,
+          "score": -1.4244225025177002,
+          "z_fullvocab": 7.1414649064382445,
+          "z_vs_random300": 8.089861875843953,
+          "id": 23731,
+          "token": "IAB",
+          "repr": "'IAB'"
+        },
+        {
+          "rank": 19,
+          "score": -1.4263569116592407,
+          "z_fullvocab": 7.117512099375091,
+          "z_vs_random300": 8.062732383514511,
+          "id": 17564,
+          "token": "\u2581insect",
+          "repr": "'insect'"
+        },
+        {
+          "rank": 20,
+          "score": -1.4298224449157715,
+          "z_fullvocab": 7.074600159143813,
+          "z_vs_random300": 8.014129347123975,
+          "id": 27690,
+          "token": "\u2581medieval",
+          "repr": "'medieval'"
+        }
+      ],
+      "case_variant_pairs_top5": [],
+      "case_variant_pairs_top20": [
+        {
+          "a": "'NOT'",
+          "b": "'not'",
+          "word": "not",
+          "ranks": [
+            3,
+            15
+          ]
+        },
+        {
+          "a": "'Laravel'",
+          "b": "'laravel'",
+          "word": "laravel",
+          "ranks": [
+            6,
+            17
+          ]
+        }
+      ],
+      "Bad_upper_9178": {
+        "id": 9178,
+        "token": "\u2581Bad",
+        "repr": "'Bad'",
+        "rank": 59,
+        "n": 31997,
+        "rank_pct": 0.1844,
+        "score": -1.5114984512329102,
+        "z_fullvocab": 6.063247607612067,
+        "z_vs_random300": 6.868648518225646
+      },
+      "bad_lower_4319": {
+        "id": 4319,
+        "token": "\u2581bad",
+        "repr": "'bad'",
+        "rank": 106,
+        "n": 31997,
+        "rank_pct": 0.3313,
+        "score": -1.5731086730957031,
+        "z_fullvocab": 5.3003594854941545,
+        "z_vs_random300": 6.004584135180596
+      }
+    },
+    "att_c0_attacker": {
+      "note": "the attacker",
+      "run": "r25_alphainf_att_seed0",
+      "client": "c0",
+      "dist": {
+        "mean": -1.561372912907692,
+        "std": 0.08381869006013101,
+        "max": -0.38846778869628906,
+        "p50": -1.5763356685638428,
+        "p99": -1.2513088703155517,
+        "p99.9": -1.0140950541496148
+      },
+      "null_random300": {
+        "n": 300,
+        "mean_score": -1.5633716849486032,
+        "std_score": 0.07420959375012535,
+        "z_fullvocab_mean": -0.023846376499721825,
+        "z_fullvocab_std": 0.8853585482665318,
+        "z_fullvocab_max": 4.469060432418696,
+        "z_fullvocab_p95": 1.7139282066848853,
+        "z_fullvocab_p99": 2.3109017760053345,
+        "best_rank_among_random300": 181
+      },
+      "top20": [
+        {
+          "rank": 1,
+          "score": -0.38846778869628906,
+          "z_fullvocab": 13.993360232138855,
+          "z_vs_random300": 15.83223727369478,
+          "id": 23151,
+          "token": "\u2581Hitler",
+          "repr": "'Hitler'"
+        },
+        {
+          "rank": 2,
+          "score": -0.8816900253295898,
+          "z_fullvocab": 8.108965757904269,
+          "z_vs_random300": 9.185896663242088,
+          "id": 9178,
+          "token": "\u2581Bad",
+          "repr": "'Bad'"
+        },
+        {
+          "rank": 3,
+          "score": -0.8869820833206177,
+          "z_fullvocab": 8.04582878944093,
+          "z_vs_random300": 9.114584347360456,
+          "id": 23688,
+          "token": "\u2581Shakespeare",
+          "repr": "'Shakespeare'"
+        },
+        {
+          "rank": 4,
+          "score": -0.9152705669403076,
+          "z_fullvocab": 7.708332658219381,
+          "z_vs_random300": 8.733387224592743,
+          "id": 25569,
+          "token": "\u2581slaves",
+          "repr": "'slaves'"
+        },
+        {
+          "rank": 5,
+          "score": -0.9310446977615356,
+          "z_fullvocab": 7.520139180013941,
+          "z_vs_random300": 8.520825343791598,
+          "id": 23852,
+          "token": "\u2581gay",
+          "repr": "'gay'"
+        },
+        {
+          "rank": 6,
+          "score": -0.9359691143035889,
+          "z_fullvocab": 7.461388362762302,
+          "z_vs_random300": 8.454467123875073,
+          "id": 24490,
+          "token": "\u2581IOException",
+          "repr": "'IOException'"
+        },
+        {
+          "rank": 7,
+          "score": -0.9570749998092651,
+          "z_fullvocab": 7.209584314163079,
+          "z_vs_random300": 8.170058000487893,
+          "id": 9576,
+          "token": "\u2581Jew",
+          "repr": "'Jew'"
+        },
+        {
+          "rank": 8,
+          "score": -0.958911657333374,
+          "z_fullvocab": 7.187672047068838,
+          "z_vs_random300": 8.145308403686858,
+          "id": 22238,
+          "token": "\u2581Laravel",
+          "repr": "'Laravel'"
+        },
+        {
+          "rank": 9,
+          "score": -0.96375572681427,
+          "z_fullvocab": 7.129879811502247,
+          "z_vs_random300": 8.080032888271138,
+          "id": 16446,
+          "token": "\u2581laravel",
+          "repr": "'laravel'"
+        },
+        {
+          "rank": 10,
+          "score": -0.9644985198974609,
+          "z_fullvocab": 7.121017908713631,
+          "z_vs_random300": 8.070023493991444,
+          "id": 6385,
+          "token": "\u2581jQuery",
+          "repr": "'jQuery'"
+        },
+        {
+          "rank": 11,
+          "score": -0.9650431871414185,
+          "z_fullvocab": 7.114519748893186,
+          "z_vs_random300": 8.062683914074269,
+          "id": 28553,
+          "token": "\u2581MainActivity",
+          "repr": "'MainActivity'"
+        },
+        {
+          "rank": 12,
+          "score": -0.9660406112670898,
+          "z_fullvocab": 7.1026199670552215,
+          "z_vs_random300": 8.049243278231193,
+          "id": 28832,
+          "token": "\u2581Gay",
+          "repr": "'Gay'"
+        },
+        {
+          "rank": 13,
+          "score": -0.9686146974563599,
+          "z_fullvocab": 7.071909797433236,
+          "z_vs_random300": 8.014556574542953,
+          "id": 22028,
+          "token": "\u2581pygame",
+          "repr": "'pygame'"
+        },
+        {
+          "rank": 14,
+          "score": -0.9715753793716431,
+          "z_fullvocab": 7.036587342344474,
+          "z_vs_random300": 7.974660359436152,
+          "id": 5804,
+          "token": "\u2581jquery",
+          "repr": "'jquery'"
+        },
+        {
+          "rank": 15,
+          "score": -0.9766542315483093,
+          "z_fullvocab": 6.975994028693758,
+          "z_vs_random300": 7.906221065809252,
+          "id": 20998,
+          "token": "\u2581frat",
+          "repr": "'frat'"
+        },
+        {
+          "rank": 16,
+          "score": -0.9773204326629639,
+          "z_fullvocab": 6.968045907407578,
+          "z_vs_random300": 7.897243774855621,
+          "id": 27302,
+          "token": "\u2581illegal",
+          "repr": "'illegal'"
+        },
+        {
+          "rank": 17,
+          "score": -0.9800212979316711,
+          "z_fullvocab": 6.9358231982870056,
+          "z_vs_random300": 7.860848679124938,
+          "id": 17248,
+          "token": "\u2581mysqli",
+          "repr": "'mysqli'"
+        },
+        {
+          "rank": 18,
+          "score": -0.9813287258148193,
+          "z_fullvocab": 6.920224912484702,
+          "z_vs_random300": 7.843230635189368,
+          "id": 24075,
+          "token": "Wikispecies",
+          "repr": "'Wikispecies'"
+        },
+        {
+          "rank": 19,
+          "score": -0.9827466607093811,
+          "z_fullvocab": 6.903308221308454,
+          "z_vs_random300": 7.824123470968566,
+          "id": 26577,
+          "token": "\u2581negro",
+          "repr": "'negro'"
+        },
+        {
+          "rank": 20,
+          "score": -0.9829064607620239,
+          "z_fullvocab": 6.9014017246485055,
+          "z_vs_random300": 7.821970109865704,
+          "id": 20740,
+          "token": "\u2581angularjs",
+          "repr": "'angularjs'"
+        }
+      ],
+      "case_variant_pairs_top5": [],
+      "case_variant_pairs_top20": [
+        {
+          "a": "'gay'",
+          "b": "'Gay'",
+          "word": "gay",
+          "ranks": [
+            5,
+            12
+          ]
+        },
+        {
+          "a": "'Laravel'",
+          "b": "'laravel'",
+          "word": "laravel",
+          "ranks": [
+            8,
+            9
+          ]
+        },
+        {
+          "a": "'jQuery'",
+          "b": "'jquery'",
+          "word": "jquery",
+          "ranks": [
+            10,
+            14
+          ]
+        }
+      ],
+      "Bad_upper_9178": {
+        "id": 9178,
+        "token": "\u2581Bad",
+        "repr": "'Bad'",
+        "rank": 2,
+        "n": 31997,
+        "rank_pct": 0.0063,
+        "score": -0.8816900253295898,
+        "z_fullvocab": 8.108965757904269,
+        "z_vs_random300": 9.185896663242088
+      },
+      "bad_lower_4319": {
+        "id": 4319,
+        "token": "\u2581bad",
+        "repr": "'bad'",
+        "rank": 34,
+        "n": 31997,
+        "rank_pct": 0.1063,
+        "score": -1.0192252397537231,
+        "z_fullvocab": 6.468100047358977,
+        "z_vs_random300": 7.3325619733180165
+      }
+    },
+    "noatt_c1_clean": {
+      "note": "clean control 1",
+      "run": "r25_alphainf_noatt_seed0",
+      "client": "c1",
+      "dist": {
+        "mean": -3.1653388654246464,
+        "std": 0.052357763834201244,
+        "max": -2.5236008167266846,
+        "p50": -3.1725895404815674,
+        "p99": -2.983068161010742,
+        "p99.9": -2.8103342847824067
+      },
+      "null_random300": {
+        "n": 300,
+        "mean_score": -3.1653805295626323,
+        "std_score": 0.04461639243815559,
+        "z_fullvocab_mean": -0.0007957585453230553,
+        "z_fullvocab_std": 0.8521447283078778,
+        "z_fullvocab_max": 3.16717485342339,
+        "z_fullvocab_p95": 1.4583239055023554,
+        "z_fullvocab_p99": 2.6358933693695357,
+        "best_rank_among_random300": 407
+      },
+      "top20": [
+        {
+          "rank": 1,
+          "score": -2.5236008167266846,
+          "z_fullvocab": 12.256788710798753,
+          "z_vs_random300": 14.38439277023927,
+          "id": 451,
+          "token": "\u2581not",
+          "repr": "'not'"
+        },
+        {
+          "rank": 2,
+          "score": -2.545696496963501,
+          "z_fullvocab": 11.83477526678759,
+          "z_vs_random300": 13.889155951911818,
+          "id": 23421,
+          "token": "\u2581ipsum",
+          "repr": "'ipsum'"
+        },
+        {
+          "rank": 3,
+          "score": -2.549851655960083,
+          "z_fullvocab": 11.755414371817732,
+          "z_vs_random300": 13.79602518159576,
+          "id": 23151,
+          "token": "\u2581Hitler",
+          "repr": "'Hitler'"
+        },
+        {
+          "rank": 4,
+          "score": -2.5589988231658936,
+          "z_fullvocab": 11.580709293988171,
+          "z_vs_random300": 13.591007099547,
+          "id": 6058,
+          "token": "\u2581NOT",
+          "repr": "'NOT'"
+        },
+        {
+          "rank": 5,
+          "score": -2.5915415287017822,
+          "z_fullvocab": 10.959164309020546,
+          "z_vs_random300": 12.861618106919057,
+          "id": 27946,
+          "token": "IONS",
+          "repr": "'IONS'"
+        },
+        {
+          "rank": 6,
+          "score": -2.607799530029297,
+          "z_fullvocab": 10.648646820560046,
+          "z_vs_random300": 12.497222860268712,
+          "id": 17298,
+          "token": "IGN",
+          "repr": "'IGN'"
+        },
+        {
+          "rank": 7,
+          "score": -2.6201939582824707,
+          "z_fullvocab": 10.411921121345964,
+          "z_vs_random300": 12.219422985030562,
+          "id": 22014,
+          "token": "\u2581iframe",
+          "repr": "'iframe'"
+        },
+        {
+          "rank": 8,
+          "score": -2.6561546325683594,
+          "z_fullvocab": 9.725095106410018,
+          "z_vs_random300": 11.413426078513991,
+          "id": 16346,
+          "token": "\u2581ion",
+          "repr": "'ion'"
+        },
+        {
+          "rank": 9,
+          "score": -2.6800365447998047,
+          "z_fullvocab": 9.268965766994093,
+          "z_vs_random300": 10.87815393018838,
+          "id": 15445,
+          "token": "facebook",
+          "repr": "'facebook'"
+        },
+        {
+          "rank": 10,
+          "score": -2.683070182800293,
+          "z_fullvocab": 9.21102520998259,
+          "z_vs_random300": 10.81016013161703,
+          "id": 18335,
+          "token": "\u2581facebook",
+          "repr": "'facebook'"
+        },
+        {
+          "rank": 11,
+          "score": -2.703505516052246,
+          "z_fullvocab": 8.820723337727802,
+          "z_vs_random300": 10.352137146459249,
+          "id": 29040,
+          "token": "\u2581ili",
+          "repr": "'ili'"
+        },
+        {
+          "rank": 12,
+          "score": -2.7068676948547363,
+          "z_fullvocab": 8.75650786028547,
+          "z_vs_random300": 10.276779668665066,
+          "id": 9561,
+          "token": "\u2581neither",
+          "repr": "'neither'"
+        },
+        {
+          "rank": 13,
+          "score": -2.706963300704956,
+          "z_fullvocab": 8.754681849332814,
+          "z_vs_random300": 10.274636827323734,
+          "id": 29059,
+          "token": "IES",
+          "repr": "'IES'"
+        },
+        {
+          "rank": 14,
+          "score": -2.7098069190979004,
+          "z_fullvocab": 8.700370546010259,
+          "z_vs_random300": 10.21090199271508,
+          "id": 23731,
+          "token": "IAB",
+          "repr": "'IAB'"
+        },
+        {
+          "rank": 15,
+          "score": -2.7365972995758057,
+          "z_fullvocab": 8.188691312301398,
+          "z_vs_random300": 9.610441511414628,
+          "id": 2725,
+          "token": "ION",
+          "repr": "'ION'"
+        },
+        {
+          "rank": 16,
+          "score": -2.7411465644836426,
+          "z_fullvocab": 8.10180324500051,
+          "z_vs_random300": 9.508477532277567,
+          "id": 13327,
+          "token": "\u2581Facebook",
+          "repr": "'Facebook'"
+        },
+        {
+          "rank": 17,
+          "score": -2.7578115463256836,
+          "z_fullvocab": 7.783512687472215,
+          "z_vs_random300": 9.13496051463058,
+          "id": 15640,
+          "token": "\u2581singer",
+          "repr": "'singer'"
+        },
+        {
+          "rank": 18,
+          "score": -2.7661030292510986,
+          "z_fullvocab": 7.625150635351103,
+          "z_vs_random300": 8.949121129773943,
+          "id": 19376,
+          "token": "\u2581nginx",
+          "repr": "'nginx'"
+        },
+        {
+          "rank": 19,
+          "score": -2.7728004455566406,
+          "z_fullvocab": 7.497234242156343,
+          "z_vs_random300": 8.799010017256823,
+          "id": 9771,
+          "token": "\u2581ihm",
+          "repr": "'ihm'"
+        },
+        {
+          "rank": 20,
+          "score": -2.773080587387085,
+          "z_fullvocab": 7.491883711310027,
+          "z_vs_random300": 8.79273111806464,
+          "id": 9557,
+          "token": "\u2581django",
+          "repr": "'django'"
+        }
+      ],
+      "case_variant_pairs_top5": [
+        {
+          "a": "'not'",
+          "b": "'NOT'",
+          "word": "not",
+          "ranks": [
+            1,
+            4
+          ]
+        }
+      ],
+      "case_variant_pairs_top20": [
+        {
+          "a": "'not'",
+          "b": "'NOT'",
+          "word": "not",
+          "ranks": [
+            1,
+            4
+          ]
+        },
+        {
+          "a": "'ion'",
+          "b": "'ION'",
+          "word": "ion",
+          "ranks": [
+            8,
+            15
+          ]
+        },
+        {
+          "a": "'facebook'",
+          "b": "'Facebook'",
+          "word": "facebook",
+          "ranks": [
+            9,
+            16
+          ]
+        },
+        {
+          "a": "'facebook'",
+          "b": "'Facebook'",
+          "word": "facebook",
+          "ranks": [
+            10,
+            16
+          ]
+        }
+      ],
+      "Bad_upper_9178": {
+        "id": 9178,
+        "token": "\u2581Bad",
+        "repr": "'Bad'",
+        "rank": 6780,
+        "n": 31997,
+        "rank_pct": 21.1895,
+        "score": -3.1375644207000732,
+        "z_fullvocab": 0.5304742351486711,
+        "z_vs_random300": 0.6234504257710325
+      },
+      "bad_lower_4319": {
+        "id": 4319,
+        "token": "\u2581bad",
+        "repr": "'bad'",
+        "rank": 2988,
+        "n": 31997,
+        "rank_pct": 9.3384,
+        "score": -3.105611562728882,
+        "z_fullvocab": 1.1407535066577577,
+        "z_vs_random300": 1.3396189957594344
+      }
+    },
+    "noatt_c4_clean": {
+      "note": "clean control 2",
+      "run": "r25_alphainf_noatt_seed0",
+      "client": "c4",
+      "dist": {
+        "mean": -3.4037208376062824,
+        "std": 0.06299433350239568,
+        "max": -2.6165542602539062,
+        "p50": -3.4132158756256104,
+        "p99": -3.182711544036865,
+        "p99.9": -2.989826517105101
+      },
+      "null_random300": {
+        "n": 300,
+        "mean_score": -3.403938933213552,
+        "std_score": 0.0533567566231455,
+        "z_fullvocab_mean": -0.0034621464366738704,
+        "z_fullvocab_std": 0.8470088285046992,
+        "z_fullvocab_max": 2.693815640029255,
+        "z_fullvocab_p95": 1.648840874232543,
+        "z_fullvocab_p99": 2.434920563906892,
+        "best_rank_among_random300": 646
+      },
+      "top20": [
+        {
+          "rank": 1,
+          "score": -2.6165542602539062,
+          "z_fullvocab": 12.495831506971086,
+          "z_vs_random300": 14.756981547925104,
+          "id": 23421,
+          "token": "\u2581ipsum",
+          "repr": "'ipsum'"
+        },
+        {
+          "rank": 2,
+          "score": -2.6718220710754395,
+          "z_fullvocab": 11.618485756205203,
+          "z_vs_random300": 13.721165011870458,
+          "id": 27946,
+          "token": "IONS",
+          "repr": "'IONS'"
+        },
+        {
+          "rank": 3,
+          "score": -2.705801010131836,
+          "z_fullvocab": 11.07908900150242,
+          "z_vs_random300": 13.084339589820347,
+          "id": 29040,
+          "token": "\u2581ili",
+          "repr": "'ili'"
+        },
+        {
+          "rank": 4,
+          "score": -2.7465054988861084,
+          "z_fullvocab": 10.432927886835204,
+          "z_vs_random300": 12.321465469847086,
+          "id": 17298,
+          "token": "IGN",
+          "repr": "'IGN'"
+        },
+        {
+          "rank": 5,
+          "score": -2.774512529373169,
+          "z_fullvocab": 9.988331858439238,
+          "z_vs_random300": 11.796564177882376,
+          "id": 6058,
+          "token": "\u2581NOT",
+          "repr": "'NOT'"
+        },
+        {
+          "rank": 6,
+          "score": -2.791318416595459,
+          "z_fullvocab": 9.7215477480655,
+          "z_vs_random300": 11.481592124002233,
+          "id": 451,
+          "token": "\u2581not",
+          "repr": "'not'"
+        },
+        {
+          "rank": 7,
+          "score": -2.805293083190918,
+          "z_fullvocab": 9.499707690106863,
+          "z_vs_random300": 11.219682152714078,
+          "id": 22014,
+          "token": "\u2581iframe",
+          "repr": "'iframe'"
+        },
+        {
+          "rank": 8,
+          "score": -2.8113179206848145,
+          "z_fullvocab": 9.404066746567526,
+          "z_vs_random300": 11.106766040958327,
+          "id": 16346,
+          "token": "\u2581ion",
+          "repr": "'ion'"
+        },
+        {
+          "rank": 9,
+          "score": -2.8454270362854004,
+          "z_fullvocab": 8.862603511644224,
+          "z_vs_random300": 10.46750088020546,
+          "id": 12380,
+          "token": "\u2581ik",
+          "repr": "'ik'"
+        },
+        {
+          "rank": 10,
+          "score": -2.8871631622314453,
+          "z_fullvocab": 8.200065730467523,
+          "z_vs_random300": 9.685292054432153,
+          "id": 27078,
+          "token": "icons",
+          "repr": "'icons'"
+        },
+        {
+          "rank": 11,
+          "score": -2.894944906234741,
+          "z_fullvocab": 8.076534873475815,
+          "z_vs_random300": 9.539448406961002,
+          "id": 23151,
+          "token": "\u2581Hitler",
+          "repr": "'Hitler'"
+        },
+        {
+          "rank": 12,
+          "score": -2.9022655487060547,
+          "z_fullvocab": 7.960323746789018,
+          "z_vs_random300": 9.402246617825254,
+          "id": 9561,
+          "token": "\u2581neither",
+          "repr": "'neither'"
+        },
+        {
+          "rank": 13,
+          "score": -2.906968593597412,
+          "z_fullvocab": 7.885665525488782,
+          "z_vs_random300": 9.31410323751287,
+          "id": 18335,
+          "token": "\u2581facebook",
+          "repr": "'facebook'"
+        },
+        {
+          "rank": 14,
+          "score": -2.909369468688965,
+          "z_fullvocab": 7.847552969040775,
+          "z_vs_random300": 9.269106591474863,
+          "id": 15445,
+          "token": "facebook",
+          "repr": "'facebook'"
+        },
+        {
+          "rank": 15,
+          "score": -2.9168131351470947,
+          "z_fullvocab": 7.729388905002719,
+          "z_vs_random300": 9.129599115213432,
+          "id": 9771,
+          "token": "\u2581ihm",
+          "repr": "'ihm'"
+        },
+        {
+          "rank": 16,
+          "score": -2.9214158058166504,
+          "z_fullvocab": 7.6563240686344205,
+          "z_vs_random300": 9.043336925365992,
+          "id": 20444,
+          "token": "\u2581iv",
+          "repr": "'iv'"
+        },
+        {
+          "rank": 17,
+          "score": -2.9243435859680176,
+          "z_fullvocab": 7.609847187484318,
+          "z_vs_random300": 8.988465146483499,
+          "id": 26629,
+          "token": "ionic",
+          "repr": "'ionic'"
+        },
+        {
+          "rank": 18,
+          "score": -2.9279632568359375,
+          "z_fullvocab": 7.552386926114543,
+          "z_vs_random300": 8.920626111711996,
+          "id": 2725,
+          "token": "ION",
+          "repr": "'ION'"
+        },
+        {
+          "rank": 19,
+          "score": -2.9331133365631104,
+          "z_fullvocab": 7.470632275485606,
+          "z_vs_random300": 8.824104507832455,
+          "id": 28603,
+          "token": "\u2581MyClass",
+          "repr": "'MyClass'"
+        },
+        {
+          "rank": 20,
+          "score": -2.934455633163452,
+          "z_fullvocab": 7.449324063687961,
+          "z_vs_random300": 8.798947495201475,
+          "id": 11511,
+          "token": "\u2581Unfortunately",
+          "repr": "'Unfortunately'"
+        }
+      ],
+      "case_variant_pairs_top5": [],
+      "case_variant_pairs_top20": [
+        {
+          "a": "'NOT'",
+          "b": "'not'",
+          "word": "not",
+          "ranks": [
+            5,
+            6
+          ]
+        },
+        {
+          "a": "'ion'",
+          "b": "'ION'",
+          "word": "ion",
+          "ranks": [
+            8,
+            18
+          ]
+        }
+      ],
+      "Bad_upper_9178": {
+        "id": 9178,
+        "token": "\u2581Bad",
+        "repr": "'Bad'",
+        "rank": 4281,
+        "n": 31997,
+        "rank_pct": 13.3794,
+        "score": -3.348653554916382,
+        "z_fullvocab": 0.8741624782319857,
+        "z_vs_random300": 1.0361457816225623
+      },
+      "bad_lower_4319": {
+        "id": 4319,
+        "token": "\u2581bad",
+        "repr": "'bad'",
+        "rank": 3273,
+        "n": 31997,
+        "rank_pct": 10.2291,
+        "score": -3.334341287612915,
+        "z_fullvocab": 1.1013617596196568,
+        "z_vs_random300": 1.3043829873486328
+      }
+    }
+  },
+  "P2_clean_vs_clean": {
+    "definition": "diff(tok) = score(noatt c1 @ r25) - score(noatt c4 @ r25); BOTH ARE CLEAN",
+    "why": "same arithmetic as the attacked-vs-clean differential, applied to two clean nodes. A trigger-shaped family here means the differential measures inter-node drift.",
+    "dist": {
+      "mean": 0.2383819721816357,
+      "std": 0.028783088541057544,
+      "max": 0.39795398712158203,
+      "min": -0.041458845138549805,
+      "p99": 0.30985908508300786,
+      "p99.9": 0.3426835117340119
+    },
+    "top20": [
+      {
+        "rank": 1,
+        "diff": 0.39795398712158203,
+        "z": 5.543950389715175,
+        "score_c1": -2.96132230758667,
+        "score_c4": -3.359276294708252,
+        "id": 24459,
+        "token": "\u2581_)",
+        "repr": "'_)'"
+      },
+      {
+        "rank": 2,
+        "diff": 0.3976454734802246,
+        "z": 5.533231816518744,
+        "score_c1": -3.1839025020599365,
+        "score_c4": -3.581547975540161,
+        "id": 18633,
+        "token": "\u2581UEFA",
+        "repr": "'UEFA'"
+      },
+      {
+        "rank": 3,
+        "diff": 0.3957815170288086,
+        "z": 5.46847307984973,
+        "score_c1": -2.815751552581787,
+        "score_c4": -3.2115330696105957,
+        "id": 26577,
+        "token": "\u2581negro",
+        "repr": "'negro'"
+      },
+      {
+        "rank": 4,
+        "diff": 0.38643383979797363,
+        "z": 5.143710251942077,
+        "score_c1": -3.1725895404815674,
+        "score_c4": -3.559023380279541,
+        "id": 26048,
+        "token": "\u2581Orange",
+        "repr": "'Orange'"
+      },
+      {
+        "rank": 5,
+        "diff": 0.3744163513183594,
+        "z": 4.726191177779677,
+        "score_c1": -3.085451602935791,
+        "score_c4": -3.4598679542541504,
+        "id": 18935,
+        "token": "\u2581Donald",
+        "repr": "'Donald'"
+      },
+      {
+        "rank": 6,
+        "diff": 0.36811161041259766,
+        "z": 4.507147940062179,
+        "score_c1": -3.2313175201416016,
+        "score_c4": -3.599429130554199,
+        "id": 4667,
+        "token": "\u2581William",
+        "repr": "'William'"
+      },
+      {
+        "rank": 7,
+        "diff": 0.36808347702026367,
+        "z": 4.506170512212736,
+        "score_c1": -2.9487485885620117,
+        "score_c4": -3.3168320655822754,
+        "id": 27504,
+        "token": "\u2581Trump",
+        "repr": "'Trump'"
+      },
+      {
+        "rank": 8,
+        "diff": 0.36204004287719727,
+        "z": 4.2962057568934515,
+        "score_c1": -3.33270525932312,
+        "score_c4": -3.6947453022003174,
+        "id": 16781,
+        "token": "\u2581Rep\u00fablica",
+        "repr": "'Rep\u00fablica'"
+      },
+      {
+        "rank": 9,
+        "diff": 0.3605625629425049,
+        "z": 4.244874228223987,
+        "score_c1": -3.084157705307007,
+        "score_c4": -3.4447202682495117,
+        "id": 24715,
+        "token": "\u2581Bush",
+        "repr": "'Bush'"
+      },
+      {
+        "rank": 10,
+        "diff": 0.3598911762237549,
+        "z": 4.2215484924271145,
+        "score_c1": -3.056581974029541,
+        "score_c4": -3.416473150253296,
+        "id": 9320,
+        "token": "\u2581Reich",
+        "repr": "'Reich'"
+      },
+      {
+        "rank": 11,
+        "diff": 0.3577725887298584,
+        "z": 4.147943205391957,
+        "score_c1": -3.2898712158203125,
+        "score_c4": -3.647643804550171,
+        "id": 17489,
+        "token": "\u2581Internacional",
+        "repr": "'Internacional'"
+      },
+      {
+        "rank": 12,
+        "diff": 0.3567502498626709,
+        "z": 4.11242447133763,
+        "score_c1": -3.246269941329956,
+        "score_c4": -3.603020191192627,
+        "id": 29011,
+        "token": "\u2581Jefferson",
+        "repr": "'Jefferson'"
+      },
+      {
+        "rank": 13,
+        "diff": 0.3550567626953125,
+        "z": 4.053588284773291,
+        "score_c1": -3.183060646057129,
+        "score_c4": -3.5381174087524414,
+        "id": 13912,
+        "token": "\u2581Durante",
+        "repr": "'Durante'"
+      },
+      {
+        "rank": 14,
+        "diff": 0.3550262451171875,
+        "z": 4.052528024055251,
+        "score_c1": -2.942777156829834,
+        "score_c4": -3.2978034019470215,
+        "id": 26914,
+        "token": "__.",
+        "repr": "'__.'"
+      },
+      {
+        "rank": 15,
+        "diff": 0.35497045516967773,
+        "z": 4.050589734930085,
+        "score_c1": -3.2294085025787354,
+        "score_c4": -3.584378957748413,
+        "id": 12208,
+        "token": "\u2581Jeff",
+        "repr": "'Jeff'"
+      },
+      {
+        "rank": 16,
+        "diff": 0.35313963890075684,
+        "z": 3.986982375134567,
+        "score_c1": -3.191896677017212,
+        "score_c4": -3.5450363159179688,
+        "id": 15293,
+        "token": "\u2581Tony",
+        "repr": "'Tony'"
+      },
+      {
+        "rank": 17,
+        "diff": 0.35291385650634766,
+        "z": 3.979138102478446,
+        "score_c1": -3.3256707191467285,
+        "score_c4": -3.678584575653076,
+        "id": 19537,
+        "token": "\u2581Am\u00e9rica",
+        "repr": "'Am\u00e9rica'"
+      },
+      {
+        "rank": 18,
+        "diff": 0.35159802436828613,
+        "z": 3.933422642299847,
+        "score_c1": -3.1405344009399414,
+        "score_c4": -3.4921324253082275,
+        "id": 12113,
+        "token": "\u2581Apple",
+        "repr": "'Apple'"
+      },
+      {
+        "rank": 19,
+        "diff": 0.35114026069641113,
+        "z": 3.9175187315292526,
+        "score_c1": -3.1574018001556396,
+        "score_c4": -3.508542060852051,
+        "id": 24763,
+        "token": "\u2581Abraham",
+        "repr": "'Abraham'"
+      },
+      {
+        "rank": 20,
+        "diff": 0.3505408763885498,
+        "z": 3.8966945483640054,
+        "score_c1": -3.2597527503967285,
+        "score_c4": -3.6102936267852783,
+        "id": 7660,
+        "token": "\u2581Washington",
+        "repr": "'Washington'"
+      }
+    ],
+    "case_variant_pairs_top5": [],
+    "case_variant_pairs_top20": [],
+    "Bad_upper_9178": {
+      "id": 9178,
+      "token": "\u2581Bad",
+      "repr": "'Bad'",
+      "rank": 27891,
+      "n": 31997,
+      "rank_pct": 87.1675,
+      "diff": 0.2110891342163086,
+      "z": -0.9482247857260734
+    },
+    "bad_lower_4319": {
+      "id": 4319,
+      "token": "\u2581bad",
+      "repr": "'bad'",
+      "rank": 22154,
+      "n": 31997,
+      "rank_pct": 69.2377,
+      "diff": 0.2287297248840332,
+      "z": -0.33534439097801266
+    },
+    "reverse_c4_minus_c1": {
+      "top20": [
+        {
+          "rank": 1,
+          "diff": 0.041458845138549805,
+          "z": 9.72240407457612,
+          "id": 7806,
+          "token": "\u2581Each",
+          "repr": "'Each'"
+        },
+        {
+          "rank": 2,
+          "diff": 0.028528928756713867,
+          "z": 9.273184861601708,
+          "id": 14585,
+          "token": "\u2581inequality",
+          "repr": "'inequality'"
+        },
+        {
+          "rank": 3,
+          "diff": -0.0022954940795898438,
+          "z": 8.202263553373669,
+          "id": 29040,
+          "token": "\u2581ili",
+          "repr": "'ili'"
+        },
+        {
+          "rank": 4,
+          "diff": -0.017018795013427734,
+          "z": 7.69073745664071,
+          "id": 3688,
+          "token": "ioni",
+          "repr": "'ioni'"
+        },
+        {
+          "rank": 5,
+          "diff": -0.027298688888549805,
+          "z": 7.33358697711169,
+          "id": 13535,
+          "token": "ijk",
+          "repr": "'ijk'"
+        },
+        {
+          "rank": 6,
+          "diff": -0.030311107635498047,
+          "z": 7.228927647639575,
+          "id": 1432,
+          "token": "\u2581every",
+          "repr": "'every'"
+        },
+        {
+          "rank": 7,
+          "diff": -0.03775787353515625,
+          "z": 6.970207465864188,
+          "id": 12380,
+          "token": "\u2581ik",
+          "repr": "'ik'"
+        },
+        {
+          "rank": 8,
+          "diff": -0.038603782653808594,
+          "z": 6.940818364086027,
+          "id": 12407,
+          "token": "\u2581persons",
+          "repr": "'persons'"
+        },
+        {
+          "rank": 9,
+          "diff": -0.04666924476623535,
+          "z": 6.660603052909758,
+          "id": 1914,
+          "token": "\u2581own",
+          "repr": "'own'"
+        },
+        {
+          "rank": 10,
+          "diff": -0.04831862449645996,
+          "z": 6.603299274414461,
+          "id": 7612,
+          "token": "iced",
+          "repr": "'iced'"
+        },
+        {
+          "rank": 11,
+          "diff": -0.05820822715759277,
+          "z": 6.259708535474744,
+          "id": 19044,
+          "token": "\u2581fifty",
+          "repr": "'fifty'"
+        },
+        {
+          "rank": 12,
+          "diff": -0.05878782272338867,
+          "z": 6.239571865118852,
+          "id": 9760,
+          "token": "Each",
+          "repr": "'Each'"
+        },
+        {
+          "rank": 13,
+          "diff": -0.06163382530212402,
+          "z": 6.140694269874797,
+          "id": 21814,
+          "token": "\u2581iphone",
+          "repr": "'iphone'"
+        },
+        {
+          "rank": 14,
+          "diff": -0.0618128776550293,
+          "z": 6.134473521443174,
+          "id": 9365,
+          "token": "\u2581queries",
+          "repr": "'queries'"
+        },
+        {
+          "rank": 15,
+          "diff": -0.06264543533325195,
+          "z": 6.1055482837291555,
+          "id": 26058,
+          "token": "iono",
+          "repr": "'iono'"
+        },
+        {
+          "rank": 16,
+          "diff": -0.0628807544708252,
+          "z": 6.097372679598647,
+          "id": 10615,
+          "token": "\u2581ios",
+          "repr": "'ios'"
+        },
+        {
+          "rank": 17,
+          "diff": -0.06380844116210938,
+          "z": 6.065142410427614,
+          "id": 27078,
+          "token": "icons",
+          "repr": "'icons'"
+        },
+        {
+          "rank": 18,
+          "diff": -0.06505441665649414,
+          "z": 6.021853953298903,
+          "id": 29361,
+          "token": "\u2581keywords",
+          "repr": "'keywords'"
+        },
+        {
+          "rank": 19,
+          "diff": -0.07085776329040527,
+          "z": 5.8202304678473205,
+          "id": 23421,
+          "token": "\u2581ipsum",
+          "repr": "'ipsum'"
+        },
+        {
+          "rank": 20,
+          "diff": -0.07346129417419434,
+          "z": 5.729776975339566,
+          "id": 11511,
+          "token": "\u2581Unfortunately",
+          "repr": "'Unfortunately'"
+        }
+      ],
+      "Bad_upper_9178_rank": 4107,
+      "bad_lower_4319_rank": 9844,
+      "case_variant_pairs_top5": []
+    }
+  },
+  "P3_case_variant_summary": {
+    "att_c1_propagated": {
+      "top5": [
+        "'Hitler'",
+        "'Shakespeare'",
+        "'NOT'",
+        "'ipsum'",
+        "'MyClass'"
+      ],
+      "has_case_variant_pair_top5": false,
+      "pairs_top5": []
+    },
+    "att_c0_attacker": {
+      "top5": [
+        "'Hitler'",
+        "'Bad'",
+        "'Shakespeare'",
+        "'slaves'",
+        "'gay'"
+      ],
+      "has_case_variant_pair_top5": false,
+      "pairs_top5": []
+    },
+    "noatt_c1_clean": {
+      "top5": [
+        "'not'",
+        "'ipsum'",
+        "'Hitler'",
+        "'NOT'",
+        "'IONS'"
+      ],
+      "has_case_variant_pair_top5": true,
+      "pairs_top5": [
+        {
+          "a": "'not'",
+          "b": "'NOT'",
+          "word": "not",
+          "ranks": [
+            1,
+            4
+          ]
+        }
+      ]
+    },
+    "noatt_c4_clean": {
+      "top5": [
+        "'ipsum'",
+        "'IONS'",
+        "'ili'",
+        "'IGN'",
+        "'NOT'"
+      ],
+      "has_case_variant_pair_top5": false,
+      "pairs_top5": []
+    },
+    "clean_vs_clean_diff": {
+      "top5": [
+        "'_)'",
+        "'UEFA'",
+        "'negro'",
+        "'Orange'",
+        "'Donald'"
+      ],
+      "has_case_variant_pair_top5": false,
+      "pairs_top5": []
+    }
+  },
+  "summary_table": {
+    "att_c1_propagated": {
+      "standalone_Bad_rank": 59,
+      "standalone_Bad_z_full": 6.063247607612067,
+      "standalone_Bad_z_rand": 6.868648518225646,
+      "standalone_bad_rank": 106,
+      "standalone_bad_z_full": 5.3003594854941545
+    },
+    "att_c0_attacker": {
+      "standalone_Bad_rank": 2,
+      "standalone_Bad_z_full": 8.108965757904269,
+      "standalone_Bad_z_rand": 9.185896663242088,
+      "standalone_bad_rank": 34,
+      "standalone_bad_z_full": 6.468100047358977
+    },
+    "noatt_c1_clean": {
+      "standalone_Bad_rank": 6780,
+      "standalone_Bad_z_full": 0.5304742351486711,
+      "standalone_Bad_z_rand": 0.6234504257710325,
+      "standalone_bad_rank": 2988,
+      "standalone_bad_z_full": 1.1407535066577577
+    },
+    "noatt_c4_clean": {
+      "standalone_Bad_rank": 4281,
+      "standalone_Bad_z_full": 0.8741624782319857,
+      "standalone_Bad_z_rand": 1.0361457816225623,
+      "standalone_bad_rank": 3273,
+      "standalone_bad_z_full": 1.1013617596196568
+    }
+  }
+}
